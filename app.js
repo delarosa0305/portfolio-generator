@@ -25,16 +25,29 @@
 //     profileDataArr.forEach((profileItem) => console.log(profileItem));
 // };
 
-const fs = require('fs');
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const generatePage = require('./src/page-template.js');
+const inquirer = require('inquirer')
 
-const profielDataArgs = process.argv.slice(2, process.argv.length);
+inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is you name?'
+        }
+    ])
+    .then(answers => console.log(answers));
 
-const [name, github] = profielDataArgs;
+// const fs = require('fs');
+// const generatePage = require('./src/page-template.js');
 
-fs.writeFile('index.html', generatePage(name, github), err => {
-    if (err) throw err;
+// const pageHTML = generatePage(name, github);
 
-    console.log('Portfolio complete! Checkout Index.html to see the output')
-})
+// fs.writeFile('index.html', generatePage(name, github), err => {
+//     if (err) throw err;
+
+//     console.log('Portfolio complete! Checkout Index.html to see the output');
+// });
+
+
